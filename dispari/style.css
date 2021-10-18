@@ -11,3 +11,12 @@ main {
     text-align: center;
     margin-top: 150px;
 }
+
+.btn-container{
+    padding: 10px;
+}
+
+.btn-container>button {
+    padding: 5px 20px;
+    border-color: mediumslateblue;
+}
