@@ -23,7 +23,6 @@ let numeroScelto;
 let pari;
 let dispari
 let somma;
-// let moduloSomma;
 
 
 //al click del pulsante compare l'alert e comincia il ciclo.
@@ -45,10 +44,11 @@ buttonPari.addEventListener("click", function () {
     let numeroPc = getRandomIntInclusive(1, 5) //funzione numero casuale;
     console.log(`numero PC = ${numeroPc}`);
     alert(`Pa-ri-e-Dis-pa-ri!   Numero I.A. : ${numeroPc}`);
-    somma = numeroScelto + numeroPc
-    console.log(somma);
+    // somma = numeroScelto + numeroPc
+    let sommaFinale = sommaNumeri(numeroScelto, numeroPc);
+    console.log(sommaFinale);
     
-    if (somma % 2 === 0 && pari === true){
+    if (sommaFinale % 2 === 0 && pari === true){
         alert("Hai vinto")
         console.log("numero pari")
     } else {
@@ -57,7 +57,34 @@ buttonPari.addEventListener("click", function () {
 })
 
 //al click del pulsante dispari, l'opzione e' automaticamente dispari
-
+buttonDispari.addEventListener("click", function () {
+    console.log("ok")
+    //scegliendo pari, viene automaticamente scelta l'opzione pari
+    //chiedo prompt
+    numeroScelto = parseInt(prompt("Inserisci un numero da 1 a 5"))
+    console.log(`Numero Utente ${numeroScelto}`)
+    
+    //condizioni if
+    if (numeroScelto > 5){
+        alert("Inserisci un numero da 1 a 5!")
+        return
+    }
+    
+    //generazione numero casuale PC
+    let numeroPc = getRandomIntInclusive(1, 5) //funzione numero casuale;
+    console.log(`numero PC = ${numeroPc}`);
+    alert(`Pa-ri-e-Dis-pa-ri!   Numero I.A. : ${numeroPc}`);
+    // somma = numeroScelto + numeroPc
+    let sommaFinale = sommaNumeri(numeroScelto, numeroPc);
+    console.log(sommaFinale);
+    
+    if (sommaFinale % 3 === 0){
+        alert("Hai vinto")
+        console.log("numero pari")
+    } else {
+        alert("Ha vinto l'I.A.")
+    }
+})
 
 /*FUNZIONI*/
 function getRandomIntInclusive(min = 1, max = 5) {
@@ -66,12 +93,13 @@ function getRandomIntInclusive(min = 1, max = 5) {
     return Math.floor(Math.random() * (max - min + min) + 1);  //function by MDN 
 }
 
-function sommaNumeri() {
-    somma = numeroScelto + numeroPc;
-    
-    if (sommaNumeri() % 2 != 0){
+function sommaNumeri(numeroScelto, numeroPc) {
+    let somma = numeroScelto + numeroPc;
+    if (somma % 2 !== 0){
      dispari = true
      console.log('Numero dispari')   
+    } else {
+        pari = true
     }
     return somma
 }
