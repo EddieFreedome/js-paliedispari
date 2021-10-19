@@ -19,10 +19,12 @@ const button = document.querySelectorAll(".my-buttons")
 
 const buttonPari = document.getElementById("pari")
 const buttonDispari = document.getElementById("dispari")
-let numeroScelto
-let pari
-let somma
-let bimBumBam
+let numeroScelto;
+let pari;
+let dispari
+let somma;
+// let moduloSomma;
+
 
 //al click del pulsante compare l'alert e comincia il ciclo.
 buttonPari.addEventListener("click", function () {
@@ -46,11 +48,18 @@ buttonPari.addEventListener("click", function () {
     somma = numeroScelto + numeroPc
     console.log(somma);
     
-    
-    
-    
+    if (somma % 2 === 0 && pari === true){
+        alert("Hai vinto")
+        console.log("numero pari")
+    } else {
+        alert("Ha vinto l'I.A.")
+    }
 })
 
+//al click del pulsante dispari, l'opzione e' automaticamente dispari
+
+
+/*FUNZIONI*/
 function getRandomIntInclusive(min = 1, max = 5) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -59,5 +68,22 @@ function getRandomIntInclusive(min = 1, max = 5) {
 
 function sommaNumeri() {
     somma = numeroScelto + numeroPc;
+    
+    if (sommaNumeri() % 2 != 0){
+     dispari = true
+     console.log('Numero dispari')   
+    }
     return somma
+}
+
+function creaNumeroUtente(){
+    numeroScelto = parseInt(prompt("Inserisci un numero da 1 a 5"))
+    console.log(`Numero Utente ${numeroScelto}`)
+    
+    //condizioni if
+    if (numeroScelto > 5){
+        alert("Inserisci un numero da 1 a 5!")
+        return
+    }
+
 }
